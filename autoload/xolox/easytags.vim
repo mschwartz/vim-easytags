@@ -22,7 +22,7 @@ endif
 function! xolox#easytags#initialize(min_version) " {{{2
   " Check that the location of Exuberant Ctags has been configured or that the
   " correct version of the program exists in one of its default locations.
-  if exists('g:easytags_cmd') && xolox#easytags#check_ctags_compatible(g:easytags_cmd, a:min_version)
+  if exists('g:easytags_cmd') " && xolox#easytags#check_ctags_compatible(g:easytags_cmd, a:min_version)
     return 1
   endif
   if xolox#misc#os#is_win()
@@ -35,10 +35,10 @@ function! xolox#easytags#initialize(min_version) " {{{2
     " versions of Exuberant Ctags installed is not that relevant to Windows
     " since it doesn't have a package management system. I still want to fix
     " xolox#shell#execute_with_dll() though.
-    if xolox#easytags#check_ctags_compatible('ctags', a:min_version)
+"    if xolox#easytags#check_ctags_compatible('ctags', a:min_version)
       let g:easytags_cmd = 'ctags'
       return 1
-    endif
+"    endif
   else
     " Exuberant Ctags can be installed under several names:
     "  - On Ubuntu Linux, Exuberant Ctags is installed as `ctags-exuberant'
@@ -53,7 +53,8 @@ function! xolox#easytags#initialize(min_version) " {{{2
     " possible location, meaning that as long as Exuberant Ctags is installed
     " in the $PATH the plug-in should find it automatically.
     for program in xolox#misc#path#which('exuberant-ctags', 'ctags-exuberant', 'ctags', 'exctags')
-      if xolox#easytags#check_ctags_compatible(program, a:min_version)
+      if exists(program)
+"      if xolox#easytags#check_ctags_compatible(program, a:min_version)
         let g:easytags_cmd = program
         return 1
       endif
