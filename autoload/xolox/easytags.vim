@@ -62,7 +62,7 @@ function! xolox#easytags#initialize(min_version) " {{{2
   endif
 endfunction
 
-function! xolox#easytags#check_ctags_compatible(name, min_version) " {{{2
+"function! xolox#easytags#check_ctags_compatible(name, min_version) " {{{2
   " Not every executable out there named `ctags' is in fact Exuberant Ctags.
   " This function makes sure it is because the easytags plug-in requires the
   " --list-languages option (and more).
