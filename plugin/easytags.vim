@@ -65,7 +65,7 @@ endif
 " Make sure Exuberant Ctags >= 5.5 is installed.
 "g:easytags_ctags_version = '5.5'
 
-xolox#easytags#initialize('0.0.0.0')
+call xolox#easytags#initialize('0.0.0.0')
 "if !xolox#easytags#initialize('0.0.0')
   " Did the user configure the plug-in to suppress the regular warning message?
 "  if !(exists('g:easytags_suppress_ctags_warning') && g:easytags_suppress_ctags_warning)
