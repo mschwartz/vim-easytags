@@ -65,31 +65,32 @@ endif
 " Make sure Exuberant Ctags >= 5.5 is installed.
 "g:easytags_ctags_version = '5.5'
 
-if !xolox#easytags#initialize('0.0.0')
+xolox#easytags#initialize('0.0.0.0')
+"if !xolox#easytags#initialize('0.0.0')
   " Did the user configure the plug-in to suppress the regular warning message?
-  if !(exists('g:easytags_suppress_ctags_warning') && g:easytags_suppress_ctags_warning)
+"  if !(exists('g:easytags_suppress_ctags_warning') && g:easytags_suppress_ctags_warning)
     " Explain to the user what went wrong:
-    if !exists('g:easytags_ctags_version') || empty(g:easytags_ctags_version)
+"    if !exists('g:easytags_ctags_version') || empty(g:easytags_ctags_version)
       " Exuberant Ctags is not installed / could not be found.
-      let s:msg = "easytags.vim %s: Plug-in not loaded because Exuberant Ctags isn't installed!"
-      if executable('apt-get')
-        let s:msg .= " On Ubuntu & Debian you can install Exuberant Ctags by"
-        let s:msg .= " installing the package named `exuberant-ctags':"
-        let s:msg .= " sudo apt-get install exuberant-ctags"
-      else
-        let s:msg .= " Please download & install Exuberant Ctags from http://ctags.sf.net"
-      endif
-      call xolox#misc#msg#warn(s:msg, g:xolox#easytags#version)
-    else
+"      let s:msg = "easytags.vim %s: Plug-in not loaded because Exuberant Ctags isn't installed!"
+"      if executable('apt-get')
+"        let s:msg .= " On Ubuntu & Debian you can install Exuberant Ctags by"
+"        let s:msg .= " installing the package named `exuberant-ctags':"
+"        let s:msg .= " sudo apt-get install exuberant-ctags"
+"      else
+"        let s:msg .= " Please download & install Exuberant Ctags from http://ctags.sf.net"
+"      endif
+"      call xolox#misc#msg#warn(s:msg, g:xolox#easytags#version)
+"    else
       " The installed version is too old.
-      let s:msg = "easytags.vim %s: Plug-in not loaded because Exuberant Ctags 5.5"
-      let s:msg .= " or newer is required while you have version %s installed!"
-      call xolox#misc#msg#warn(s:msg, g:xolox#easytags#version, g:easytags_ctags_version)
-    endif
-    unlet s:msg
-  endif
+"      let s:msg = "easytags.vim %s: Plug-in not loaded because Exuberant Ctags 5.5"
+"      let s:msg .= " or newer is required while you have version %s installed!"
+"      call xolox#misc#msg#warn(s:msg, g:xolox#easytags#version, g:easytags_ctags_version)
+"    endif
+"    unlet s:msg
+"  endif
   " Stop loading the plug-in; don't define the (automatic) commands.
-  finish
+"  finish
 "endif
 
 " The plug-in initializes the &tags option as soon as possible so that the
